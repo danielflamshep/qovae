@@ -9,7 +9,7 @@ from data_utils import *
 from experiments import *
 
 def main(hypers=None, save_name ='model1'):
-    h5f = h5py.File('data/qo_dataset.h5', 'r')
+    h5f = h5py.File('qo_dataset.h5', 'r')
     data = h5f['data'][:]
     h5f.close()
     nt = 2000 #  specify test set size
@@ -17,6 +17,7 @@ def main(hypers=None, save_name ='model1'):
 
     np.random.seed(1)
      # model name
+    os.mkdir('results')
     model_save = 'results/'+save_name
     model = QoVAE()
     if not hypers:
