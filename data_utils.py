@@ -15,7 +15,7 @@ def log_print(fname, text):
 
 def load_entropy():
     """loads entropy values for setup strings"""
-    es = open('data/entropy.smi','r')
+    es = open('entropy.smi','r')
     L = []
     for line_e in es:
         line_e = line_e.strip()
@@ -27,7 +27,7 @@ def load(hypers):
     ss, es = [], []
 
     es_ = load_entropy()
-    e = open('data/setups.smi','r')
+    e = open('setups.smi','r')
 
     for i, line in enumerate(e):
         line = line.strip()
@@ -59,7 +59,7 @@ def make_data(hypers):
         OH[count,:,:] = many_one_hot(np.array(indices), DIM)
         count = count + 1
 
-    h5f = h5py.File('data/qo_dataset.h5','w')
+    h5f = h5py.File('qo_dataset.h5','w')
     h5f.create_dataset('data', data=OH)
     h5f.create_dataset('chr',  data=devices)
     h5f.close()
